@@ -585,3 +585,89 @@ Processing by ArticlesController#index as HTML
 Completed 200 OK in 16ms (Views: 15.2ms | ActiveRecord: 0.2ms)
 
 
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddUserIdToArticles (20170328174401)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.2ms)[0m  [1m[35mALTER TABLE "articles" ADD "user_id" integer[0m
+  [1m[35m (0.1ms)[0m  [1m[34mselect sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_articles_on_user_id" ON "articles" ("user_id")[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20170328174401"]]
+  [1m[35m (11.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_articles_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_articles_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[36mArticle Load (0.1ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" ORDER BY "articles"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+Started GET "/articles/new" for 127.0.0.1 at 2017-03-28 19:46:23 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ArticlesController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering articles/new.html.haml within layouts/application
+  Rendered articles/_form.html.haml (19.9ms)
+  Rendered articles/new.html.haml within layouts/application (21.6ms)
+Completed 200 OK in 91ms (Views: 32.2ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/articles" for 127.0.0.1 at 2017-03-28 19:46:44 +0200
+Processing by ArticlesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ER5HFSYvgB2pdZF4TtPt2Ta6V6rCjVGEUJ0K/ND66GFMs/8lPSxMMjTGcbWUiEtMT4PYLVvK4iPFIzGm6eiqig==", "article"=>{"title"=>"One Last Article", "content"=>"Slow-carb pop-up selvage letterpress etsy. Hexagon typewriter pork belly, 3 wolf moon deep v austin subway tile cray portland banh mi woke celiac tumblr ennui. Cred affogato cardigan, pok pok narwhal meggings hashtag pitchfork heirloom kickstarter offal. YOLO blog iceland etsy chartreuse la croix. Cronut quinoa raw denim master cleanse, distillery artisan shabby chic vaporware enamel pin tumeric. Photo booth tousled activated charcoal godard lo-fi. Offal heirloom mixtape edison bulb typewriter 8-bit, farm-to-table green juice helvetica photo booth dreamcatcher pickled scenester VHS."}, "commit"=>"Create Article"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "articles" ("title", "content", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["title", "One Last Article"], ["content", "Slow-carb pop-up selvage letterpress etsy. Hexagon typewriter pork belly, 3 wolf moon deep v austin subway tile cray portland banh mi woke celiac tumblr ennui. Cred affogato cardigan, pok pok narwhal meggings hashtag pitchfork heirloom kickstarter offal. YOLO blog iceland etsy chartreuse la croix. Cronut quinoa raw denim master cleanse, distillery artisan shabby chic vaporware enamel pin tumeric. Photo booth tousled activated charcoal godard lo-fi. Offal heirloom mixtape edison bulb typewriter 8-bit, farm-to-table green juice helvetica photo booth dreamcatcher pickled scenester VHS."], ["created_at", 2017-03-28 17:46:44 UTC], ["updated_at", 2017-03-28 17:46:44 UTC], ["user_id", 1]]
+  [1m[35m (14.0ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/articles/3
+Completed 302 Found in 22ms (ActiveRecord: 14.9ms)
+
+
+Started GET "/articles/3" for 127.0.0.1 at 2017-03-28 19:46:44 +0200
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mArticle Load (0.2ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering articles/show.html.haml within layouts/application
+  Rendered articles/show.html.haml within layouts/application (1.2ms)
+Completed 200 OK in 18ms (Views: 15.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-03-28 19:46:46 +0200
+Processing by ArticlesController#index as HTML
+  Rendering articles/index.html.haml within layouts/application
+  [1m[36mArticle Load (0.2ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY created_at DESC[0m
+  Rendered articles/index.html.haml within layouts/application (2.9ms)
+Completed 200 OK in 18ms (Views: 16.6ms | ActiveRecord: 0.2ms)
+
+
+  [1m[36mArticle Load (0.1ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" ORDER BY "articles"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mArticle Load (0.2ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" ORDER BY "articles"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "articles" SET "updated_at" = ?, "user_id" = ? WHERE "articles"."id" = ?[0m  [["updated_at", 2017-03-28 17:47:25 UTC], ["user_id", 1], ["id", 1]]
+  [1m[35m (81.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArticle Load (0.2ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "articles" SET "updated_at" = ?, "user_id" = ? WHERE "articles"."id" = ?[0m  [["updated_at", 2017-03-28 17:47:55 UTC], ["user_id", 1], ["id", 2]]
+  [1m[35m (23.3ms)[0m  [1m[36mcommit transaction[0m
